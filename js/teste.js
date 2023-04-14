@@ -1,4 +1,5 @@
-import { sum, subtract, multiply, divide, ptnc, factorial, sqrt, isEven, isOdd, isPrime } from './script.js';
+const { sum, subtract, multiply, divide, ptnc, factorial, sqrt, isEven, isOdd, isPrime } = require ('./functions/functionsOperations.js');
+var assert = require('assert');
 
 //testando a soma
 assert(sum(6,7) == 13, "a soma de 6+7 é igual a 13");
@@ -8,7 +9,7 @@ assert(sum(0,-3) == -3, "a soma de 0+(-3) é igual a -3");
 assert(sum(0,0) == 0, "a soma de 0+0 é igual a 0");
 assert(sum(2,3) == 5, "a soma de 2+3 é igual a 5");
 assert(sum(1.5,1) == 2.5, "a soma de 1.5+1 é igual a 2.5");
-assert(sum(5,-5) == -10, "a soma de 5+(-5) é igual a -10");
+assert(sum(5,-5) == 0, "a soma de 5+(-5) é igual a 0");
 
 //testando a subtração
 assert(subtract(5,3) == 2, "a subtração de 5-3 é igual a 2");
