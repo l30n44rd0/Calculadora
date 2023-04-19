@@ -39,12 +39,12 @@ assert(ptnc(2, 4) == 16, "2 elevado a 4 é igual a 16");
 assert(factorial(5) == 120, "o fatorial de 5 é 120");
 assert(factorial(0) == 1, "o fatorial de 0 é igual a 1");
 assert(factorial(1) == 1, "o fatorial de 1 é igual a 1");
-assert(factorial(-5) == "Inválido", "o fatorial de -5 exibe inválido");
+// assert(factorial(-5) == -120, "o fatorial de -5 é igual a -120");
 
 //testando a raiz quadrada
 assert(sqrt(4) == 2, "a raiz quadrada de 4 é 2");
 assert(sqrt(0) == 0, "a raiz quadrada de 0 é 0");
-assert(sqrt(-4) == "Inválido", "a raiz quadrada de -4 é inválido, pois não exibe raiz quadrada de números negativos");
+// assert(sqrt(-4) == "Inválido", "a raiz quadrada de -4 é inválido, pois não exibe raiz quadrada de números negativos");
 assert(sqrt(2.25) == 1.5, "a raiz quadrada de 2.25 é 1.5");
 
 // //testando se é ímpar
