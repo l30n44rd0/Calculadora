@@ -13,8 +13,8 @@ assert(sum(5,-5) == 0, "a soma de 5+(-5) é igual a 0");
 
 //testando a subtração
 assert(subtract(5,3) == 2, "a subtração de 5-3 é igual a 2");
-assert(subtract(0,-4) == -4, "a subtração de 0-(-4) é igual a -4");
-assert(subtract(0.5,1.5) == 1, "a subtração de 0.5-1.5 é igual a 1");
+assert(subtract(0,-4) == 4, "a subtração de 0-(-4) é igual a 4");
+assert(subtract(0.5,1.5) == -1, "a subtração de 0.5-1.5 é igual a -1");
 assert(subtract(-5,5) == -10, "a subtração de -5-5 é igual a -10");
 
 //testando a multplicação
@@ -31,7 +31,7 @@ assert(divide(-10, 5) == -2, "a divisão de -10/5 é igual a -2");
 
 //testando a expotenciação
 assert(ptnc(2, 3) == 8, "2 elevado a 3 é igual a 8");
-assert(ptnc(9, 0) == 0, "qualquer número elevado a 0 dá 0");
+assert(ptnc(9, 0) == 1, "qualquer número elevado a 0 dá 1");
 assert(ptnc(1.5, 1) == 1.5, "1.5 elevado a 1 é igual a 1.5 (ele mesmo)");
 assert(ptnc(2, 4) == 16, "2 elevado a 4 é igual a 16");
 
@@ -47,7 +47,7 @@ assert(sqrt(0) == 0, "a raiz quadrada de 0 é 0");
 assert(sqrt(-4) == "Inválido", "a raiz quadrada de -4 é inválido, pois não exibe raiz quadrada de números negativos");
 assert(sqrt(2.25) == 1.5, "a raiz quadrada de 2.25 é 1.5");
 
-//testando se é ímpar
+// //testando se é ímpar
 assert(isOdd(5) == "Sim", "o número 5 é ímpar");
 assert(isOdd(8) == "Não", "o número 8 NÃO é ímpar");
 assert(isOdd(-15) == "Sim", "o número 15 é ímpar");
@@ -55,7 +55,7 @@ assert(isOdd(-2) == "Não", "o número -2 NÃO é ímpar");
 assert(isOdd(0) == "Não", "o número 0 NÃO é ímpar");
 assert(isOdd(1) == "Sim", "o número 1 é ímpar");
 
-//testando se é par
+// //testando se é par
 assert(isEven(4) == "Sim", "o número 4 é par");
 assert(isEven(7) == "Não", "o número 7 NÃO é par");
 assert(isEven(-10) == "Sim", "o número -10 é par");
@@ -63,7 +63,7 @@ assert(isEven(-3) == "Não", "o número -3 NÃO é par");
 assert(isEven(0) == "Sim", "o número 0 é par");
 assert(isEven(1) == "Não", "o número 1 NÃO é par");
 
-//testando se é um número primo
+// //testando se é um número primo
 assert(isPrime(7) == "Sim", "o número 7 é primo");
 assert(isPrime(15) == "Não", "o número 15 não é primo");
 assert(isPrime(-7) == "Não", "o número -7 não é primo");

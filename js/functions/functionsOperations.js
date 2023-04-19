@@ -1,11 +1,9 @@
-const resultPrimo = require("../graphicInterface");
-const resultPar = require("../graphicInterface");
-const resultImpar = require("../graphicInterface");
-const previousOperationText = require("../graphicInterface");
-const currentOperationText = require("../graphicInterface");
-const currentOperation = require("../graphicInterface");
+const { resultPrimo, resultPar, resultImpar, previousOperationText, currentOperationText, currentOperation } = require("../graphicInterface");
 
-const { updateScreen } = require('./functionsOperations');
+// let newResultPar = resultPar.innerText;
+// let newResultImpar = resultImpar.innerText;
+
+const { updateScreen } = require('./functionsDisplay');
 
 function sum(a, b) {
   return a + b;
@@ -26,10 +24,10 @@ function divide(a, b) {
 function factorial(n) {
   if (n === 0 || n === 1) {
     return 1;
-  } else {
-    return n * factorial(n - 1);
   }
+  return n * factorial(n - 1);
 }
+
 
 function sqrt(n) {
     return Math.sqrt(n);
@@ -40,21 +38,26 @@ function ptnc(b, e) {
 }
 
 function isOdd(num) { //ver se é impar
-    if(num % 2 !== 0) {
+   if(num % 2 !== 0) {
+      newResultPar = "Não";
         resultPar.innerText = "Não";
-        console.log(`${num} é ímpar`);
-    } else {
+       console.log(`${num} é ímpar`);
+   } else {
+       newResultPar = "Sim";
         resultPar.innerText = "Sim";
-        console.log(`${num} é par`);
-    }
+       console.log(`${num} é par`);
+   }
+  // retirar o innerText e fazer com o return
 }
   
 function isEven(num) { //ver se é ímpar
     if(num % 2 === 0) {
-        resultImpar.innerText = "Não";
+        newResultImpar = "Não";
+        // resultImpar.innerText = "Não";
         console.log(`${num} é par`);
     } else{
-        resultImpar.innerText = "Sim";
+        newResultImpar = "Sim";
+        // resultImpar.innerText = "Sim";
         console.log(`${num} é ímpar`);
     }
   }
