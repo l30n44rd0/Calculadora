@@ -40,28 +40,23 @@ function ptnc(b, e) {
     return Math.pow(b, e);
 }
 
-function isOdd(num) { //ver se é impar
-   if(num % 2 !== 0) {
-      newResultPar = "Não";
-        resultPar.innerText = "Não";
-       console.log(`${num} é ímpar`);
-   } else {
-       newResultPar = "Sim";
-        resultPar.innerText = "Sim";
-       console.log(`${num} é par`);
-   }
-  // retirar o innerText e fazer com o return
+function isOdd(num) {
+  if (num % 2 !== 0) {
+     console.log(`${num} é ímpar`);
+     return "Não";
+  } else {
+     console.log(`${num} é par`);
+     return "Sim";
+  }
 }
   
 function isEven(num) { //ver se é ímpar
     if(num % 2 === 0) {
-        newResultImpar = "Não";
-        // resultImpar.innerText = "Não";
         console.log(`${num} é par`);
+        return "Não";
     } else{
-        newResultImpar = "Sim";
-        // resultImpar.innerText = "Sim";
         console.log(`${num} é ímpar`);
+        return "Sim";
     }
   }
 
