@@ -40,7 +40,7 @@ function ptnc(b, e) {
     return Math.pow(b, e);
 }
 
-function isOdd(num) {
+function saberSeEImpar(num) {
   if (num % 2 !== 0) {
      console.log(`${num} é ímpar`);
      return "Não";
@@ -50,7 +50,7 @@ function isOdd(num) {
   }
 }
   
-function isEven(num) { //ver se é ímpar
+function saberSeEPar(num) { //ver se é ímpar
     if(num % 2 === 0) {
         console.log(`${num} é par`);
         return "Não";
@@ -132,8 +132,8 @@ function processOperation(operation) {
         processEqualOperator();
         break;
       case "?":
-          result = isOdd(currentOperationText.innerText);
-          result = isEven(currentOperationText.innerText);
+          result = saberSeEImpar(currentOperationText.innerText);
+          result = saberSeEPar(currentOperationText.innerText);
           result = isPrime(currentOperationText.innerText);
       break;
       default:
@@ -154,4 +154,4 @@ function changeOperation(operation) {
     updateScreen();
 }
   
-module.exports = { sum, subtract, multiply, divide, ptnc, factorial, sqrt, isEven, isOdd, isPrime, processOperation, changeOperation };
+module.exports = { sum, subtract, multiply, divide, ptnc, factorial, sqrt, isEven: saberSeEPar, isOdd: saberSeEImpar, isPrime, processOperation, changeOperation };

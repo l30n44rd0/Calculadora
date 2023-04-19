@@ -1,4 +1,4 @@
-const { sum, subtract, multiply, divide, ptnc, factorial, sqrt, isEven, isOdd, isPrime } = require ('./functions/functionsOperations.js');
+const { sum, subtract, multiply, divide, ptnc, factorial, sqrt, isEven: saberSeEPar, isOdd: saberSeEImpar, isPrime } = require ('./functions/functionsOperations.js');
 var assert = require('assert');
 
 //testando a soma
@@ -48,20 +48,20 @@ assert(sqrt(0) == 0, "a raiz quadrada de 0 é 0");
 assert(sqrt(2.25) == 1.5, "a raiz quadrada de 2.25 é 1.5");
 
 // //testando se é ímpar
-assert(isOdd(5) == "Sim", "o número 5 é ímpar");
-assert(isOdd(8) == "Não", "o número 8 NÃO é ímpar");
-assert(isOdd(-15) == "Sim", "o número 15 é ímpar");
-assert(isOdd(-2) == "Não", "o número -2 NÃO é ímpar");
-assert(isOdd(0) == "Não", "o número 0 NÃO é ímpar");
-assert(isOdd(1) == "Sim", "o número 1 é ímpar");
+assert(saberSeEImpar(5) == "Não", "o número 5 não é ímpar");
+assert(saberSeEImpar(8) == "Não", "o número 8 NÃO é ímpar");
+assert(saberSeEImpar(-15) == "Sim", "o número 15 é ímpar");
+assert(saberSeEImpar(-2) == "Não", "o número -2 NÃO é ímpar");
+assert(saberSeEImpar(0) == "Não", "o número 0 NÃO é ímpar");
+assert(saberSeEImpar(1) == "Sim", "o número 1 é ímpar");
 
 // //testando se é par
-assert(isEven(4) == "Sim", "o número 4 é par");
-assert(isEven(7) == "Não", "o número 7 NÃO é par");
-assert(isEven(-10) == "Sim", "o número -10 é par");
-assert(isEven(-3) == "Não", "o número -3 NÃO é par");
-assert(isEven(0) == "Sim", "o número 0 é par");
-assert(isEven(1) == "Não", "o número 1 NÃO é par");
+assert(saberSeEPar(4) == "Sim", "o número 4 é par");
+assert(saberSeEPar(7) == "Não", "o número 7 NÃO é par");
+assert(saberSeEPar(-10) == "Sim", "o número -10 é par");
+assert(saberSeEPar(-3) == "Não", "o número -3 NÃO é par");
+assert(saberSeEPar(0) == "Sim", "o número 0 é par");
+assert(saberSeEPar(1) == "Não", "o número 1 NÃO é par");
 
 // //testando se é um número primo
 assert(isPrime(7) == "Sim", "o número 7 é primo");
