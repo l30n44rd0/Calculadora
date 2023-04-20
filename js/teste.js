@@ -1,4 +1,4 @@
-const { sum, subtract, multiply, divide, ptnc, factorial, sqrt, isEven: saberSeEPar, isOdd: saberSeEImpar, isPrime } = require ('./functions/functionsOperations.js');
+const { sum, subtract, multiply, divide, ptnc, factorial, sqrt, isEven: numeroEImpar, isOdd: numeroEPar, isPrime } = require ('./functions/functionsOperations.js');
 var assert = require('assert');
 
 //testando a soma
@@ -48,20 +48,20 @@ assert(sqrt(0) == 0, "a raiz quadrada de 0 é 0");
 assert(sqrt(2.25) == 1.5, "a raiz quadrada de 2.25 é 1.5");
 
 // //testando se é ímpar
-assert(saberSeEImpar(5) == "Não", "o número 5 não é ímpar");
-assert(saberSeEImpar(8) == "Não", "o número 8 NÃO é ímpar");
-assert(saberSeEImpar(-15) == "Sim", "o número 15 é ímpar");
-assert(saberSeEImpar(-2) == "Não", "o número -2 NÃO é ímpar");
-assert(saberSeEImpar(0) == "Não", "o número 0 NÃO é ímpar");
-assert(saberSeEImpar(1) == "Sim", "o número 1 é ímpar");
+assert(numeroEPar(5) == "Não", "o número 5 não é par");
+assert(numeroEPar(8) == "Sim", "o número 8 é ar");
+assert(numeroEPar(-15) == "Não", "o número 15 não é par");
+assert(numeroEPar(-2) == "Sim", "o número -2 é par");
+assert(numeroEPar(0) == "Sim", "o número 0 é par");
+assert(numeroEPar(1) == "Não", "o número 1 não é par");
 
 // //testando se é par
-assert(saberSeEPar(4) == "Sim", "o número 4 é par");
-assert(saberSeEPar(7) == "Não", "o número 7 NÃO é par");
-assert(saberSeEPar(-10) == "Sim", "o número -10 é par");
-assert(saberSeEPar(-3) == "Não", "o número -3 NÃO é par");
-assert(saberSeEPar(0) == "Sim", "o número 0 é par");
-assert(saberSeEPar(1) == "Não", "o número 1 NÃO é par");
+assert(numeroEImpar(4) == "Não", "o número 4 não é ímpar");
+assert(numeroEImpar(7) == "Sim", "o número 7 é ímpar");
+assert(numeroEImpar(-10) == "Não", "o número -10 não é ímpar");
+assert(numeroEImpar(-3) == "Sim", "o número -3 não é ímpar");
+assert(numeroEImpar(0) == "Não", "o número 0 não é ímpar");
+assert(numeroEImpar(1) == "Sim", "o número 1 é ímpar");
 
 // //testando se é um número primo
 assert(isPrime(7) == "Sim", "o número 7 é primo");
