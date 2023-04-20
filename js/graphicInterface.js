@@ -1,7 +1,10 @@
-const { addDigit, processOperation } = require ('./functions/functionsDisplay.js');
+// const { addDigit, processOperation } = require ('./functions/functionsDisplay.js');
+import { addDigit, processOperation } from './functions/functionsDisplay';
 
-if (typeof window !== "undefined") {
+// if (typeof window !== "undefined") {
   
+document.addEventListener("DOMContentLoaded", function() {
+
   const resultPrimo = document.querySelector("#resultPrimo");
   const resultPar = document.querySelector("#resultPar");
   const resultImpar = document.querySelector("#resultImpar");
@@ -19,13 +22,15 @@ if (typeof window !== "undefined") {
         } else {
           processOperation(value);
         }
-    }) });
-  
+    }) 
+  });
+
   exports.resultPrimo = resultPrimo;
   exports.resultPar = resultPar;
   exports.resultImpar = resultImpar;
   exports.previousOperationText = previousOperationText;
   exports.currentOperationText = currentOperationText;
   exports.currentOperation = currentOperation;
-}
+});
 
+// }
