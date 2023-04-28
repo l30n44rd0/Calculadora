@@ -1,4 +1,4 @@
-const { sum, subtract, multiply, divide, ptnc, factorial, sqrt, isEven: numeroEImpar, isOdd: numeroEPar, isPrime } = require ('./functions/functionsOperations.js');
+const { sum, subtract, multiply, divide, ptnc, factorial, sqrt, isEven: numeroEImpar, isOdd: numeroEPar, isPrime } = require ('./functionsOperations.js');
 var assert = require('assert');
 
 //testando a soma
