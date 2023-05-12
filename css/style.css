@@ -77,10 +77,10 @@ body {
     border-color: #999;
 }
 
-#buttons-container #equal-btn,
+/* #buttons-container #equal-btn,
 #buttons-container #equal-btn:hover {
     grid-column: span 3;
-}
+} */
 
 #buttons-container #equal-btn {
     background-color: #75a5cb;

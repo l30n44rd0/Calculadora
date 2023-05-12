@@ -46,6 +46,8 @@
         <button id="descobrirSeEParImparPrimo">?</button>
         <button id="number-0" class="number">0</button>
         <button id="ponto">.</button>
+        <button id="abreParentese" class="parentese">(</button>
+        <button id="fechaParentese" class="parentese">)</button>
         <button id="equal-btn">=</button>
       </div>
     </div>
@@ -148,6 +150,7 @@
             break;
           case "=":
             processEqualOperator();
+            previousOperationText.innerText = previousOperationText.innerText.replace(" +", "")
             break;
           case "?":
             result = numeroEPar(currentOperationText.innerText);
