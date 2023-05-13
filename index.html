@@ -60,7 +60,14 @@
       const previousOperationText = document.querySelector("#previous-operation");
       const currentOperationText = document.querySelector("#current-operation");
       const buttons = document.querySelectorAll("#buttons-container button");
+      const abreParenteseBtn = document.querySelector("#abreParentese");
+      const fechaParenteseBtn = document.querySelector("#fechaParentese");
       let currentOperation = "";
+
+      let history = []; //  histórico de operações 
+      let openParenthesesCount = 0; //quantidade de parênteses abertos
+      let currentParenthesesExpression = ""; //estado atual dos parenteses
+
 
       buttons.forEach((btn) => {
         btn.addEventListener("click", (e) => {
@@ -73,6 +80,26 @@
           }
         });
       });
+
+      abreParenteseBtn.addEventListener("click", () => {
+        addParentese("(");
+      });
+      fechaParenteseBtn.addEventListener("click", () => {
+        addParentese(")");
+      });
+
+      function addParentese(parentese) {
+        if (currentOperation === "" && parentese === ")") {
+          return;
+        }
+        if (currentOperation[currentOperation.length - 1] === "(" && parentese === "(") {
+          return;
+        }
+
+        console.log(`PARENTESE: ${parentese}`)
+        previousOperationText.innerHTML += ` ${parentese}`;
+        // updateScreen();
+      }
 
       function changeOperation(operation) {
         const mathOperations = ["*", "-", "+", "/", "!", "√", "^", "?"];
@@ -157,18 +184,41 @@
             result = numeroEImpar(currentOperationText.innerText);
             result = isPrime(currentOperationText.innerText);
             break;
+          case "(":
+            currentParenthesesExpression += "(";
+            openParenthesesCount++;
+            break;
+          case ")":
+
+            if (openParenthesesCount > 0) {
+              currentParenthesesExpression += currentOperationText.innerText;
+              openParenthesesCount--;
+
+              // Calcular o resultado da expressão entre parênteses
+              let parenthesesResult = eval(currentParenthesesExpression);
+              currentOperationText.innerText = parenthesesResult;
+
+              // Adicionar expressão de parênteses ao histórico
+              history.push(currentParenthesesExpression + " = " + parenthesesResult);
+              // Repor a expressão de parênteses actual
+              currentParenthesesExpression = "";
+              }
+            // Adicionar o número atual à expressão
+            currentOperationText.innerText += "+";
+            
+            break;
           default:
             return;
         }
       }
 
       function updateScreen(
-        operationValue = null,
-        operation = null,
-        current = null,
-        previous = null
+        operationValue = '',
+        operation = '',
+        current = '',
+        previous = ''
       ) {
-        if (operationValue === null) {
+        if (operationValue === null || operationValue === '') {
           currentOperationText.innerText += currentOperation;
         } else {
           if (previous === 0) {
