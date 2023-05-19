@@ -14,7 +14,7 @@
     <div id="calc">
       <span class="campoDePrimo">
         <div id="espacoPrimo"><span id="primo">Primo:</span> <span id="resultPrimo"></span></div>
-        <div id="espacoPar"><span id="par">Par:</span><span id="resultPar"></span></div>
+        <div id="espacoPar"><span id="par">Par: </span><span id="resultPar"></span></div>
         <div id="espacoImpar"><span id="impar">Impar: </span><span id="resultImpar"></span></div>
       </span>
 
@@ -46,28 +46,20 @@
         <button id="descobrirSeEParImparPrimo">?</button>
         <button id="number-0" class="number">0</button>
         <button id="ponto">.</button>
-        <button id="abreParentese" class="parentese">(</button>
-        <button id="fechaParentese" class="parentese">)</button>
         <button id="equal-btn">=</button>
       </div>
     </div>
 
     <script>
       //RETIRADO DE GRAPHICINTERFACE.JS (excluído)
-      const resultPrimo = document.querySelector("#resultPrimo");
-      const resultPar = document.querySelector("#resultPar");
-      const resultImpar = document.querySelector("#resultImpar");
+      let resultPrimo = document.querySelector("#resultPrimo");
+      let resultPar = document.querySelector("#resultPar");
+      let resultImpar = document.querySelector("#resultImpar");
       const previousOperationText = document.querySelector("#previous-operation");
       const currentOperationText = document.querySelector("#current-operation");
       const buttons = document.querySelectorAll("#buttons-container button");
-      const abreParenteseBtn = document.querySelector("#abreParentese");
-      const fechaParenteseBtn = document.querySelector("#fechaParentese");
+
       let currentOperation = "";
-
-      let history = []; //  histórico de operações 
-      let openParenthesesCount = 0; //quantidade de parênteses abertos
-      let currentParenthesesExpression = ""; //estado atual dos parenteses
-
 
       buttons.forEach((btn) => {
         btn.addEventListener("click", (e) => {
@@ -80,26 +72,6 @@
           }
         });
       });
-
-      abreParenteseBtn.addEventListener("click", () => {
-        addParentese("(");
-      });
-      fechaParenteseBtn.addEventListener("click", () => {
-        addParentese(")");
-      });
-
-      function addParentese(parentese) {
-        if (currentOperation === "" && parentese === ")") {
-          return;
-        }
-        if (currentOperation[currentOperation.length - 1] === "(" && parentese === "(") {
-          return;
-        }
-
-        console.log(`PARENTESE: ${parentese}`)
-        previousOperationText.innerHTML += ` ${parentese}`;
-        // updateScreen();
-      }
 
       function changeOperation(operation) {
         const mathOperations = ["*", "-", "+", "/", "!", "√", "^", "?"];
@@ -150,16 +122,26 @@
             updateScreen(operationValue, operation, current, previous);
             break;
           case "/":
-            operationValue = divide(previous, current);
+            if (current === 0) {
+              operationValue = "Não é possível dividir qualquer número por 0";
+            } else {
+              operationValue = divide(previous, current);
+            }
+
             updateScreen(operationValue, operation, current, previous);
             break;
-          case "!":
-            operationValue = factorial(current);
-            updateScreen(operationValue, operation, current, previous);
+            case "!":
+              operationValue = factorial(current);
+              previousOperationText.innerText = operationValue;
+              currentOperationText.innerText = "";
+            console.log(`fatorial quando aperta !: ${factorial(current)}`)
+            // updateScreen(operationValue, operation, current, previous);
             break;
           case "√":
             operationValue = sqrt(current);
-            updateScreen(operationValue, operation, current, previous);
+            previousOperationText.innerText = operationValue;
+            currentOperationText.innerText = "";
+            // updateScreen(operationValue, operation, current, previous);
             break;
           case "^":
             operationValue = ptnc(previous, current);
@@ -178,34 +160,18 @@
           case "=":
             processEqualOperator();
             previousOperationText.innerText = previousOperationText.innerText.replace(" +", "")
+            previousOperationText.innerText = previousOperationText.innerText.replace(" -", "")
+            previousOperationText.innerText = previousOperationText.innerText.replace(" *", "")
+            previousOperationText.innerText = previousOperationText.innerText.replace(" /", "")
+            previousOperationText.innerText = previousOperationText.innerText.replace(" !", "")
+            previousOperationText.innerText = previousOperationText.innerText.replace(" √", "")
+            previousOperationText.innerText = previousOperationText.innerText.replace(" ^", "")
+
             break;
           case "?":
-            result = numeroEPar(currentOperationText.innerText);
-            result = numeroEImpar(currentOperationText.innerText);
-            result = isPrime(currentOperationText.innerText);
-            break;
-          case "(":
-            currentParenthesesExpression += "(";
-            openParenthesesCount++;
-            break;
-          case ")":
-
-            if (openParenthesesCount > 0) {
-              currentParenthesesExpression += currentOperationText.innerText;
-              openParenthesesCount--;
-
-              // Calcular o resultado da expressão entre parênteses
-              let parenthesesResult = eval(currentParenthesesExpression);
-              currentOperationText.innerText = parenthesesResult;
-
-              // Adicionar expressão de parênteses ao histórico
-              history.push(currentParenthesesExpression + " = " + parenthesesResult);
-              // Repor a expressão de parênteses actual
-              currentParenthesesExpression = "";
-              }
-            // Adicionar o número atual à expressão
-            currentOperationText.innerText += "+";
-            
+            resultPar.innerText = numeroEPar(currentOperationText.innerText);
+            resultImpar.innerText = numeroEImpar(currentOperationText.innerText);
+            resultPrimo.innerText = isPrime(currentOperationText.innerText);
             break;
           default:
             return;
