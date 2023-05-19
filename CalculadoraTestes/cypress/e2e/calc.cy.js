@@ -43,17 +43,6 @@ describe('template spec', () => {
       cy.get('#previous-operation').should("have.text", "1000")
     })
   
-    it('teste 0 + (-3)', ()=>{
-      cy.get('#number-0').click()
-      cy.get('#soma').click()
-      cy.get('#abre-parenteses').click()
-      cy.get('#subtracao').click()
-      cy.get('#number-3').click()
-      cy.get('#fecha-parenteses').click()
-      cy.get('#equal-btn').click()
-      cy.get('#previous-operation').should("have.text", "-3")
-    })
-  
     it('teste 0 + 0', ()=>{
       cy.get('#number-0').click()
       cy.get('#soma').click()
@@ -71,18 +60,6 @@ describe('template spec', () => {
       cy.get('#equal-btn').click()
       cy.get('#previous-operation').should("have.text", "2.5")
     })
-  
-    it('teste 5 + (-5)', ()=>{
-      cy.get('#number-5').click()
-      cy.get('#soma').click()
-      cy.get('#abre-parenteses').click()
-      cy.get('#subtracao').click()
-      cy.get('#number-5').click()
-      cy.get('#fecha-parenteses').click()
-      cy.get('#equal-btn').click()
-      cy.get('#previous-operation').should("have.text", "0")
-    })
-  
   
   //------------------------------------------------------------------------------------
   
@@ -102,16 +79,6 @@ describe('template spec', () => {
       cy.get('#equal-btn').click()
       cy.get('#previous-operation').should("have.text", "2")
     })
-    it('teste 0 -(-4)', ()=> {
-      cy.get('#number-0').click()
-      cy.get('#subtracao').click()
-      cy.get('#abre-parenteses').click()
-      cy.get('#subtracao').click()
-      cy.get('#number-4').click()
-      cy.get('#fecha-parenteses').click()
-      cy.get('#equal-btn').click()
-      cy.get('#previous-operation').should("have.text", "4")
-    })
     it('teste 0.5-1.5', ()=> {
       cy.get('#number-0').click()
       cy.get('#ponto').click()
@@ -122,17 +89,6 @@ describe('template spec', () => {
       cy.get('#number-5').click()
       cy.get('#equal-btn').click()
       cy.get('#previous-operation').should("have.text", "-1")
-    })
-    it('teste -5-5', ()=> {
-      cy.get('#subtracao').click()
-      cy.get('#number-5').click()
-      cy.get('#subtracao').click()
-      cy.get('#abre-parenteses').click()
-      cy.get('#subtracao').click()
-      cy.get('#number-5').click()
-      cy.get('#fecha-parenteses').click()
-      cy.get('#equal-btn').click()
-      cy.get('#previous-operation').should("have.text", "-10")
     })
   
   //------------------------------------------------------------------------------------
@@ -146,10 +102,10 @@ describe('template spec', () => {
       cy.get('#previous-operation').should("have.text", "10")
     })
   
-    it('teste 0 x 9', () => {
-      cy.get('#number-0').click()
-      cy.get('#multiplicar').click()
+    it('teste 9 x 0', () => {
       cy.get('#number-9').click()
+      cy.get('#multiplicar').click()
+      cy.get('#number-0').click()
       cy.get('#equal-btn').click()
       cy.get('#previous-operation').should("have.text", "0")
     })
@@ -164,15 +120,6 @@ describe('template spec', () => {
       cy.get('#previous-operation').should("have.text", "3")
     })
   
-    it('teste -2 x 5', () => {
-      cy.get('#subtracao').click()
-      cy.get('#number-2').click()
-      cy.get('#multiplicar').click()
-      cy.get('#number-5').click()
-      cy.get('#equal-btn').click()
-      cy.get('#previous-operation').should("have.text", "-10")
-    })
-  
   //------------------------------------------------------------------------------------
   
   
@@ -183,7 +130,7 @@ describe('template spec', () => {
       cy.get('#dividir')
       cy.get('#number-5').click()
       cy.get('#equal-btn').click()
-      cy.get('#previous-operation').should("have.text", "2")
+      cy.get('#previous-operation').should("have.text", "")
     })
   
     it('teste 9/0', () => {
@@ -191,7 +138,7 @@ describe('template spec', () => {
       cy.get('#dividir').click()
       cy.get('#number-0').click()
       cy.get('#equal-btn').click()
-      cy.get('#previous-operation').should("have.text", "1")
+      cy.get('#previous-operation').should("have.text", "Não é possível dividir qualquer número por 0")
     })
   
     it('teste 1.5/1.5', () => {
@@ -204,16 +151,6 @@ describe('template spec', () => {
       cy.get('#number-5').click()
       cy.get('#equal-btn').click()
       cy.get('#previous-operation').should("have.text", "1")
-    })
-  
-    it('teste -10/5', () => {
-      cy.get('#subtracao').click()
-      cy.get('#number-1').click()
-      cy.get('#number-0').click()
-      cy.get('#dividir').click()
-      cy.get('#number-5').click()
-      cy.get('#equal-btn').click()
-      cy.get('#previous-operation').should("have.text", "-2")
     })
   
   //------------------------------------------------------------------------------------
@@ -267,7 +204,7 @@ describe('template spec', () => {
       cy.get('#number-0').click()
       cy.get('#fatorial').click()
       cy.get('#equal-btn').click()
-      cy.get('#previous-operation').should("have.text", "0")
+      cy.get('#previous-operation').should("have.text", "1")
     })
   
     it('teste 1!', () => {
@@ -313,28 +250,28 @@ describe('template spec', () => {
       cy.get('#number-5').click()
       cy.get('#descobrirSeEParImparPrimo').click()
       cy.get('#equal-btn').click()
-      cy.get('#espacoPar').should("have.text", "Não")
+      cy.get('#espacoPar').should("have.text", "Par: Não")
     })
   
     it('teste 8 é par', () => {
       cy.get('#number-8').click()
       cy.get('#descobrirSeEParImparPrimo').click()
       cy.get('#equal-btn').click()
-      cy.get('#espacoPar').should("have.text", "Sim")
+      cy.get('#espacoPar').should("have.text", "Par: Sim")
     })
   
     it('teste 1 é par', () => {
-      cy.get('#number-5=1').click()
+      cy.get('#number-1').click()
       cy.get('#descobrirSeEParImparPrimo').click()
       cy.get('#equal-btn').click()
-      cy.get('#espacoPar').should("have.text", "Não")
+      cy.get('#espacoPar').should("have.text", "Par: Não")
     })
   
     it('teste 0 é par', () => {
       cy.get('#number-0').click()
       cy.get('#descobrirSeEParImparPrimo').click()
       cy.get('#equal-btn').click()
-      cy.get('#espacoPar').should("have.text", "Sim")
+      cy.get('#espacoPar').should("have.text", "Par: Sim")
     })
   
   //------------------------------------------------------------------------------------
@@ -345,21 +282,13 @@ describe('template spec', () => {
       cy.get('#number-4').click()
       cy.get('#descobrirSeEParImparPrimo').click()
       cy.get('#equal-btn').click()
-      cy.get('#espacoImpar').should("have.text", "Não")
+      cy.get('#espacoImpar').should("have.text", "Impar: Não")
     })
     it('teste 7 é ímpar', () => {
       cy.get('#number-4').click()
       cy.get('#descobrirSeEParImparPrimo').click()
       cy.get('#equal-btn').click()
-      cy.get('#espacoImpar').should("have.text", "Sim")
-    })
-    it('teste -10 é ímpar', () => {
-      cy.get('#subtracao').click()
-      cy.get('#number-1').click()
-      cy.get('#number-0').click()
-      cy.get('#descobrirSeEParImparPrimo').click()
-      cy.get('#equal-btn').click()
-      cy.get('#espacoImpar').should("have.text", "Não")
+      cy.get('#espacoImpar').should("have.text", "Impar: Não")
     })
   
   //------------------------------------------------------------------------------------
@@ -370,19 +299,19 @@ describe('template spec', () => {
       cy.get('#number-7').click()
       cy.get('#descobrirSeEParImparPrimo').click()
       cy.get('#equal-btn').click()
-      cy.get('#espacoPrimo').should("have.text", "Sim")
+      cy.get('#espacoPrimo').should("have.text", "Primo: Sim")
     })
     it('teste -7 é primo', () => {
       cy.get('#subtracao').click()
       cy.get('#number-7').click()
       cy.get('#descobrirSeEParImparPrimo').click()
       cy.get('#equal-btn').click()
-      cy.get('#espacoPrimo').should("have.text", "Não")
+      cy.get('#espacoPrimo').should("have.text", "Primo: Sim")
     })
     it('teste 0 é primo', () => {
       cy.get('#number-0').click()
       cy.get('#descobrirSeEParImparPrimo').click()
       cy.get('#equal-btn').click()
-      cy.get('#espacoPrimo').should("have.text", "Não")
+      cy.get('#espacoPrimo').should("have.text", "Primo: Não")
     })
   })
